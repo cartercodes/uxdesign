@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Taniti - Tourism</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Navigation - Kept consistent */
+        html {
+            scroll-behavior: smooth;
+        }
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: #f5f5f5;
+        }
+
+        .page-title h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        /* Introduction Section */
+        .introduction {
+            padding: 4rem 5%;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        /* Culture & Traditions Section */
+        .culture-section {
+            padding: 4rem 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            background: #f5f5f5;
+        }
+
+        .culture-content {
+            padding-right: 2rem;
+        }
+
+        .culture-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .culture-content p {
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .culture-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .culture-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Travel Information Section */
+        .travel-info {
+            padding: 4rem 5%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .travel-info h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #333;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-card h3 {
+            margin-bottom: 1rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card i {
+            color: #2196F3;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 4rem 5%;
+            background: #f5f5f5;
+        }
+
+        .faq-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #333;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        .faq-item i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active i {
+            transform: rotate(180deg);
+        }
+
+        /* Footer - Kept consistent */
+        footer {
+            background: #333;
+            color: white;
+            padding: 3rem 5%;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons i {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">Taniti</div>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="activities.html">Activities</a></li>
+            <li><a href="lodging.html">Lodging</a></li>
+            <li><a href="dining.html">Dining</a></li>
+            <li><a href="about.html">About Taniti</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="search">
+            <i class="fas fa-search"></i>
+        </div>
+    </nav>
+
+    <!-- Page Title -->
+    <div class="page-title">
+        <h1>Welcome to Taniti – A Paradise Awaits</h1>
+    </div>
+
+    <!-- Introduction Section -->
+    <section class="introduction">
+        <p>Taniti is a small, tropical island in the Pacific Ocean. With its pristine beaches, lush rainforests, and
+            rich cultural heritage, Taniti offers visitors a unique blend of relaxation, adventure, and authentic island
+            experiences. Our community welcomes tourists while maintaining our traditional way of life and natural
+            environment.</p>
+    </section>
+
+    <!-- Culture & Traditions Section -->
+    <section class="culture-section">
+        <div class="culture-content">
+            <h2>Our Culture & Traditions</h2>
+            <p>The people of Taniti have maintained their rich cultural heritage for generations. Our traditional
+                dances, music, and crafts continue to be an integral part of daily life, while our festivals celebrate
+                the island's connection to the ocean and land.</p>
+            <p>Visitors are invited to experience our traditions through cultural performances, workshops, and community
+                events that showcase the authentic spirit of Taniti.</p>
+        </div>
+        <div class="culture-image">
+            <img src="/api/placeholder/600/400" alt="Taniti Culture">
+        </div>
+    </section>
+
+    <!-- Travel Information Section -->
+    <section class="travel-info">
+        <h2>Essential Travel Information</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3><i class="fas fa-plane"></i> Airport Access</h3>
+                <p>Taniti is served by a small airport that connects to major Pacific rim cities. Direct flights are
+                    available from Los Angeles and Sydney.</p>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-passport"></i> Visa Requirements</h3>
+                <p>Most visitors can stay up to 30 days without a visa. Check our detailed visa guide for specific
+                    country requirements.</p>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-money-bill-wave"></i> Currency</h3>
+                <p>The local currency is the Taniti Dollar (TD). Major credit cards are widely accepted, and currency
+                    exchange is available at the airport and hotels.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    What's the best time to visit Taniti?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    The best time to visit Taniti is during the dry season (April to October) when the weather is most
+                    pleasant. However, our tropical climate means you can enjoy the island year-round.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    How do I get around the island?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Taniti offers various transportation options including rental cars, bikes, and local buses. Many
+                    visitors also enjoy our guided tours which provide transportation to major attractions.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is English widely spoken?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    While Tanitian is our official language, English is widely spoken in tourist areas, hotels, and
+                    restaurants. Many locals are bilingual or multilingual.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="activities.html">Activities</a></li>
+                    <li><a href="lodging.html">Lodging</a></li>
+                    <li><a href="dining.html">Dining</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>Email: info@taniti.com</li>
+                    <li>Phone: +1 (555) 123-4567</li>
+                    <li>Address: Taniti Island</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

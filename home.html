@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taniti Tourism - Discover Paradise</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Navigation */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: url('/api/placeholder/1920/1080') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .button {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .primary-button {
+            background: #2196F3;
+            color: white;
+        }
+
+        .secondary-button {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 5%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            background: #f5f5f5;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .feature-content {
+            padding: 1.5rem;
+        }
+
+        .feature-content h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        /* Featured Activities */
+        .featured-activities {
+            padding: 5rem 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .activities-content {
+            padding-right: 2rem;
+        }
+
+        .activities-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .activities-image {
+            width: 100%;
+            height: 400px;
+            background: #ddd;
+            border-radius: 10px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 5%;
+            background: #f5f5f5;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 3rem 5%;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons i {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">Taniti</div>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="activities.html">Activities</a></li>
+            <li><a href="lodging.html">Lodging</a></li>
+            <li><a href="dining.html">Dining</a></li>
+            <li><a href="about.html">About Taniti</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="search">
+            <i class="fas fa-search"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover the Hidden Paradise of Taniti</h1>
+            <p>Find adventure, relaxation, and breathtaking scenery.</p>
+            <div class="cta-buttons">
+                <button class="button primary-button">Explore Activities</button>
+                <button class="button secondary-button">Plan Your Stay</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature-card">
+            <img src="/api/placeholder/400/200" alt="Adventure">
+            <div class="feature-content">
+                <h3>Adventure Awaits</h3>
+                <p>Explore pristine beaches, hidden waterfalls, and ancient ruins on your journey through Taniti.</p>
+            </div>
+        </div>
+        <div class="feature-card">
+            <img src="/api/placeholder/400/200" alt="Relaxation">
+            <div class="feature-content">
+                <h3>Relax in Comfort</h3>
+                <p>Unwind in our world-class resorts and spas, surrounded by tropical beauty and serenity.</p>
+            </div>
+        </div>
+        <div class="feature-card">
+            <img src="/api/placeholder/400/200" alt="Dining">
+            <div class="feature-content">
+                <h3>Savor the Flavors</h3>
+                <p>Experience local cuisine and international dishes prepared by renowned chefs using fresh ingredients.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Activities -->
+    <section class="featured-activities">
+        <div class="activities-content">
+            <h2>Top Activities in Taniti</h2>
+            <p>From snorkeling in crystal-clear waters to hiking through lush rainforests, Taniti offers endless
+                possibilities for adventure and relaxation.</p>
+            <button class="button primary-button">View All Activities</button>
+        </div>
+        <div class="activities-image">
+            <img src="/api/placeholder/600/400" alt="Featured Activities">
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2>What Our Visitors Say</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p>"An unforgettable experience! The beaches were pristine and the local people were so welcoming."</p>
+                <div class="testimonial-author">Sarah M.</div>
+            </div>
+            <div class="testimonial-card">
+                <p>"The perfect blend of adventure and relaxation. Can't wait to come back!"</p>
+                <div class="testimonial-author">James R.</div>
+            </div>
+            <div class="testimonial-card">
+                <p>"The food was amazing and the activities were well-organized. A paradise indeed!"</p>
+                <div class="testimonial-author">Emily L.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="activities.html">Activities</a></li>
+                    <li><a href="lodging.html">Lodging</a></li>
+                    <li><a href="dining.html">Dining</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>Email: info@taniti.com</li>
+                    <li>Phone: +1 (555) 123-4567</li>
+                    <li>Address: Taniti Island</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

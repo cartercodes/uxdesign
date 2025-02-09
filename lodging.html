@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lodging - Taniti Tourism</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Navigation - Kept consistent */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: #f5f5f5;
+        }
+
+        .page-title h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        /* Filter & Search Section */
+        .filter-section {
+            padding: 2rem 5%;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            background: white;
+        }
+
+        .search-bar {
+            padding: 0.8rem 1rem;
+            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .filter-dropdown {
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            background: white;
+            cursor: pointer;
+        }
+
+        /* Lodging Grid */
+        .lodging-grid {
+            padding: 4rem 5%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .lodging-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .lodging-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .lodging-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .lodging-content {
+            padding: 1.5rem;
+        }
+
+        .lodging-content h3 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .price-range {
+            color: #2196F3;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .view-details-btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        .view-details-btn:hover {
+            background: #1976D2;
+        }
+
+        /* Highlighted Lodging */
+        .highlighted-lodging {
+            padding: 4rem 5%;
+            background: #f5f5f5;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .highlighted-content {
+            padding-right: 2rem;
+        }
+
+        .highlighted-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .highlighted-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .booking-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .booking-btn:hover {
+            background: #1976D2;
+        }
+
+        .highlighted-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .highlighted-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Footer - Kept consistent */
+        footer {
+            background: #333;
+            color: white;
+            padding: 3rem 5%;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons i {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">Taniti</div>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="activities.html">Activities</a></li>
+            <li><a href="lodging.html">Lodging</a></li>
+            <li><a href="dining.html">Dining</a></li>
+            <li><a href="about.html">About Taniti</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="search">
+            <i class="fas fa-search"></i>
+        </div>
+    </nav>
+
+    <!-- Page Title -->
+    <div class="page-title">
+        <h1>Find Your Perfect Stay in Taniti</h1>
+    </div>
+
+    <!-- Filter & Search Section -->
+    <div class="filter-section">
+        <input type="text" class="search-bar" placeholder="Search for accommodations...">
+        <select class="filter-dropdown">
+            <option value="">All Accommodations</option>
+            <option value="luxury">Luxury</option>
+            <option value="midrange">Mid-range</option>
+            <option value="budget">Budget</option>
+            <option value="hostels">Hostels</option>
+            <option value="bnb">Bed & Breakfast</option>
+        </select>
+    </div>
+
+    <!-- Lodging Grid -->
+    <div class="lodging-grid">
+        <div class="lodging-card">
+            <img src="/api/placeholder/400/250" alt="Ocean View Resort">
+            <div class="lodging-content">
+                <h3>Ocean View Resort</h3>
+                <div class="price-range">$$$$ | Luxury</div>
+                <a href="#" class="view-details-btn">View Details</a>
+            </div>
+        </div>
+        <div class="lodging-card">
+            <img src="/api/placeholder/400/250" alt="Palm Beach Hotel">
+            <div class="lodging-content">
+                <h3>Palm Beach Hotel</h3>
+                <div class="price-range">$$$ | Mid-range</div>
+                <a href="#" class="view-details-btn">View Details</a>
+            </div>
+        </div>
+        <div class="lodging-card">
+            <img src="/api/placeholder/400/250" alt="Sunset B&B">
+            <div class="lodging-content">
+                <h3>Sunset B&B</h3>
+                <div class="price-range">$$ | Bed & Breakfast</div>
+                <a href="#" class="view-details-btn">View Details</a>
+            </div>
+        </div>
+        <div class="lodging-card">
+            <img src="/api/placeholder/400/250" alt="Backpackers Haven">
+            <div class="lodging-content">
+                <h3>Backpackers Haven</h3>
+                <div class="price-range">$ | Hostel</div>
+                <a href="#" class="view-details-btn">View Details</a>
+            </div>
+        </div>
+        <div class="lodging-card">
+            <img src="/api/placeholder/400/250" alt="Island View Inn">
+            <div class="lodging-content">
+                <h3>Island View Inn</h3>
+                <div class="price-range">$$ | Mid-range</div>
+                <a href="#" class="view-details-btn">View Details</a>
+            </div>
+        </div>
+        <div class="lodging-card">
+            <img src="/api/placeholder/400/250" alt="Tropical Paradise Resort">
+            <div class="lodging-content">
+                <h3>Tropical Paradise Resort</h3>
+                <div class="price-range">$$$$ | Luxury</div>
+                <a href="#" class="view-details-btn">View Details</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Highlighted Lodging -->
+    <section class="highlighted-lodging">
+        <div class="highlighted-content">
+            <h2>Luxury Stay: The Taniti Resort</h2>
+            <p>Experience unparalleled luxury at our flagship resort. Featuring ocean-view suites, private beach access,
+                world-class spa facilities, and exceptional dining options. Immerse yourself in the perfect blend of
+                modern comfort and tropical paradise.</p>
+            <a href="#" class="booking-btn">Book Now</a>
+        </div>
+        <div class="highlighted-image">
+            <img src="/api/placeholder/600/400" alt="Taniti Resort">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="activities.html">Activities</a></li>
+                    <li><a href="lodging.html">Lodging</a></li>
+                    <li><a href="dining.html">Dining</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>Email: info@taniti.com</li>
+                    <li>Phone: +1 (555) 123-4567</li>
+                    <li>Address: Taniti Island</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
